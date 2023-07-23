@@ -1,55 +1,55 @@
 import {
-  HTMLChakraProps,
-  Input,
   Box,
-  IconButton,
-  chakra,
+  BoxProps,
   HStack,
+  HTMLChakraProps,
+  IconButton,
+  IconButtonProps,
+  Input,
+  StackProps,
+  StylesProvider,
+  Tag,
+  TagCloseButton,
+  TagLabel,
+  TagProps,
+  chakra,
+  forwardRef,
   omitThemingProps,
   useMultiStyleConfig,
-  StylesProvider,
-  forwardRef,
-  Tag,
-  TagLabel,
-  TagCloseButton,
-  TagProps,
-  StackProps,
   useStyles,
-  BoxProps,
-  IconButtonProps,
 } from '@chakra-ui/react'
+import { useVirtualizer } from '@tanstack/react-virtual'
 import {
   FC,
   JSXElementConstructor,
-  memo,
   ReactNode,
+  memo,
   useCallback,
   useMemo,
 } from 'react'
-import { useVirtualizer } from '@tanstack/react-virtual'
 import {
+  SelectActionProvider,
+  SelectIdProvider,
+  SelectInputProvider,
   SelectProvider,
-  useSelect,
-  useSelectButton,
-  useSelectActionGroup,
-  useSelectControl,
-  useSelectInput,
-  useSelectedItem,
-  useSelectItem,
-  useSelectLabel,
-  useSelectList,
-  useSelectedList,
+  SelectedListProvider,
+  SelectedProvider,
+  SelectionVisibilityMode,
   UseSelectProps,
   idFromOption,
   labelFromValue,
-  SelectedProvider,
-  SelectInputProvider,
-  SelectedListProvider,
-  SelectActionProvider,
-  SelectionVisibilityMode,
   useClearButton,
   useId,
-  SelectIdProvider,
+  useSelect,
+  useSelectActionGroup,
+  useSelectButton,
+  useSelectControl,
+  useSelectInput,
+  useSelectItem,
+  useSelectLabel,
+  useSelectList,
+  useSelectedItem,
+  useSelectedList,
 } from './use-select'
 
 // @see https://github.com/chakra-ui/chakra-ui/issues/140
@@ -261,6 +261,7 @@ export const SelectOptionVirtualItem = memo<SelectOptionVirtualItemProps>(
         }}
         selected={item.selected}
         created={item.created}
+        label={item.label}
         {...rest}
       />
     )
