@@ -5,17 +5,17 @@ import {
   UsePopperReturn,
   useStyles,
 } from '@chakra-ui/react'
-import { EventKeys } from '@chakra-ui/utils'
 import { createContext, mergeRefs } from '@chakra-ui/react-utils'
+import { EventKeys } from '@chakra-ui/utils'
+import computeScrollIntoView from 'compute-scroll-into-view'
 import {
+  MutableRefObject,
+  useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
-  useCallback,
-  useMemo,
-  MutableRefObject,
 } from 'react'
-import computeScrollIntoView from 'compute-scroll-into-view'
 export interface Option {
   label: string
   value: string | number
@@ -138,8 +138,7 @@ const defaultScrollToIndex: ScrollToIndex = (
     scrollIntoView(inputRef.current, optionsRef.current)
   }
 }
-export const labelFromValue = (value: string): string =>
-  `${value.charAt(0).toUpperCase()}${value.substring(1)}`
+export const labelFromValue = (value: string): string => value
 export const idFromOption = (option: Option, prefix = ''): string =>
   `${prefix}${option?.value}`
 const defaultGetOption: GetOption = (option) =>
@@ -363,18 +362,9 @@ const [SelectIdProvider, useSelectIdContext] = createContext<{
 }>({ strict: false, name: 'SelectIdContext' })
 
 export {
-  SelectProvider,
-  SelectInputProvider,
-  SelectedProvider,
-  SelectedListProvider,
-  SelectActionProvider,
-  SelectIdProvider,
-  useSelectContext,
+  SelectActionProvider, SelectedListProvider, SelectedProvider, SelectIdProvider, SelectInputProvider, SelectProvider, useSelectActionContext, useSelectContext,
   useSelectedContext,
-  useSelectedListContext,
-  useSelectInputContext,
-  useSelectActionContext,
-  useSelectIdContext,
+  useSelectedListContext, useSelectIdContext, useSelectInputContext
 }
 
 export function useSelect({
